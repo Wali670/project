@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Phantom Global Services - Login</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #000000, #1a1a1a);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #fff;
+    }
+
+    .login-container {
+      background: #111;
+      padding: 40px;
+      border-radius: 15px;
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
+      text-align: center;
+      width: 350px;
+    }
+
+    .logo img {
+      width: 120px;
+      margin-bottom: 20px;
+    }
+
+    h1 {
+      font-size: 22px;
+      margin-bottom: 10px;
+      color: #ffd700;
+      letter-spacing: 1px;
+    }
+
+    p {
+      font-size: 12px;
+      margin-bottom: 30px;
+      color: #aaa;
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 8px;
+      background: #222;
+      color: #fff;
+      font-size: 14px;
+    }
+
+    input:focus {
+      outline: none;
+      box-shadow: 0 0 10px #ffd700;
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background: #ffd700;
+      border: none;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      margin-top: 15px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #e6c200;
+      box-shadow: 0 0 15px #ffd700;
+    }
+
+    .links {
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    .links a {
+      color: #ffd700;
+      text-decoration: none;
+      margin: 0 5px;
+    }
+
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-container">
+    <div class="logo">
+      <img src="logo2.png" alt="Phantom Global Services Logo">
+    </div>
+    <h1>Phantom Global Services</h1>
+    <p>Services Beyond Boundaries</p>
+    <form>
+      <input type="text" placeholder="Username" required>
+      <input type="password" placeholder="Password" required>
+      <button type="submit">Login</button>
+    </form>
+    <div class="links">
+      <a href="#">Forgot Password?</a> | <a href="#">Create Account</a>
+    </div>
+  </div>
+</body>
+</html>
