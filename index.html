@@ -1,115 +1,201 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>tabc Global Services - Login</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>WM shopping Center — Minimal eCommerce UI</title>
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: linear-gradient(135deg, #000000, #1a1a1a);
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      color: #fff;
+    :root{
+      --bg:#0f1720; --card:#0f1720; --muted:#9aa4ae; --accent:#f3c03a; --white:#ffffff; --glass: rgba(255,255,255,0.04);
+      --maxw:1100px;
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
     }
+    *{box-sizing:border-box}
+    body{margin:0;background:linear-gradient(180deg,#07111a 0%, #0f1720 100%);color:var(--white);min-height:100vh;display:flex;flex-direction:column;align-items:center}
+    .container{width:94%;max-width:var(--maxw);}
 
-    .login-container {
-      background: #111;
-      padding: 40px;
-      border-radius: 15px;
-      box-shadow: 0 0 25px rgba(255, 215, 0, 0.2);
-      text-align: center;
-      width: 350px;
+    /* Header */
+    header{display:flex;align-items:center;justify-content:space-between;padding:20px 0}
+    .brand{display:flex;align-items:center;gap:14px}
+    .logo{width:56px;height:56px;border-radius:8px;background:linear-gradient(135deg,var(--accent),#ffdd66);display:flex;align-items:center;justify-content:center;color:#081219;font-weight:700;box-shadow:0 6px 18px rgba(0,0,0,0.6)}
+    .brand h1{margin:0;font-size:18px;letter-spacing:1px}
+    .brand p{margin:0;font-size:12px;color:var(--muted)}
+
+    nav{display:flex;gap:18px;align-items:center}
+    nav a{color:var(--muted);text-decoration:none;font-size:14px}
+    .cart{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;background:var(--glass);border-radius:10px}
+
+    /* Hero */
+    .hero{display:grid;grid-template-columns:1fr 380px;gap:30px;align-items:center;padding:18px 0}
+    .hero-left h2{font-size:34px;margin:0 0 8px}
+    .hero-left p{margin:0;color:var(--muted);max-width:60%}
+    .search{margin-top:18px;display:flex;gap:10px}
+    .search input{flex:1;padding:12px 14px;border-radius:10px;border:0;background:rgba(255,255,255,0.04);color:var(--white)}
+    .search button{padding:12px 16px;border-radius:10px;border:0;background:var(--accent);color:#081219;font-weight:700}
+
+    .hero-right{background:linear-gradient(180deg,rgba(255,255,255,0.02), transparent);padding:18px;border-radius:12px}
+    .promo{display:flex;gap:12px;align-items:center}
+    .promo img{width:84px;height:84px;object-fit:cover;border-radius:10px}
+    .promo h3{margin:0;font-size:16px}
+    .promo p{margin:0;color:var(--muted);font-size:13px}
+
+    /* Products grid */
+    .products{width:100%;display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:22px}
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:12px;border-radius:12px;display:flex;flex-direction:column;gap:10px}
+    .card img{width:100%;height:190px;object-fit:cover;border-radius:8px}
+    .card h4{margin:0;font-size:16px}
+    .card p{margin:0;color:var(--muted);font-size:13px}
+    .price-row{display:flex;justify-content:space-between;align-items:center}
+    .price{font-weight:700}
+    .btn{padding:8px 12px;border-radius:8px;border:0;background:var(--accent);color:#081219;font-weight:700}
+
+    /* Footer */
+    footer{width:100%;margin-top:40px;padding:18px 0;border-top:1px solid rgba(255,255,255,0.03);color:var(--muted);display:flex;justify-content:space-between}
+
+    /* Responsive */
+    @media (max-width:900px){
+      .hero{grid-template-columns:1fr;}
+      .hero-left p{max-width:100%}
+      .products{grid-template-columns:repeat(2,1fr)}
     }
-
-    .logo img {
-      width: 120px;
-      margin-bottom: 20px;
-    }
-
-    h1 {
-      font-size: 22px;
-      margin-bottom: 10px;
-      color: #ffd700;
-      letter-spacing: 1px;
-    }
-
-    p {
-      font-size: 12px;
-      margin-bottom: 30px;
-      color: #aaa;
-    }
-
-    input[type="text"],
-    input[type="password"] {
-      width: 100%;
-      padding: 12px;
-      margin: 10px 0;
-      border: none;
-      border-radius: 8px;
-      background: #222;
-      color: #fff;
-      font-size: 14px;
-    }
-
-    input:focus {
-      outline: none;
-      box-shadow: 0 0 10px #ffd700;
-    }
-
-    button {
-      width: 100%;
-      padding: 12px;
-      background: #ffd700;
-      border: none;
-      border-radius: 8px;
-      font-size: 14px;
-      font-weight: bold;
-      cursor: pointer;
-      margin-top: 15px;
-      transition: 0.3s;
-    }
-
-    button:hover {
-      background: #e6c200;
-      box-shadow: 0 0 15px #ffd700;
-    }
-
-    .links {
-      margin-top: 20px;
-      font-size: 12px;
-    }
-
-    .links a {
-      color: #ffd700;
-      text-decoration: none;
-      margin: 0 5px;
-    }
-
-    .links a:hover {
-      text-decoration: underline;
+    @media (max-width:520px){
+      .products{grid-template-columns:1fr}
+      .brand h1{font-size:16px}
+      .hero-left h2{font-size:26px}
     }
   </style>
 </head>
 <body>
-  <div class="login-container">
-    <div class="logo">
-      <img src="logo2.png" alt="Phantom Global Services Logo">
-    </div>
-    <h1>PP Global Services</h1>
-    <p>Services Beyond Boundaries</p>
-    <form>
-      <input type="text" placeholder="Username" required>
-      <input type="password" placeholder="Password" required>
-      <button type="submit">Login</button>
-    </form>
-    <div class="links">
-      <a href="#">Forgot Password?</a> | <a href="#">Create Account</a>
-    </div>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">PG</div>
+        <div>
+          <h1>Phantom Mart</h1>
+          <p>Services Beyond Boundaries</p>
+        </div>
+      </div>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#products">Products</a>
+        <a href="#contact">Contact</a>
+        <div class="cart">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6 6h15l-1.5 9h-11L6 6z" stroke="#081219" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" fill="#fff"/></svg>
+          <strong style="color:var(--white)">Cart</strong>
+        </div>
+      </nav>
+    </header>
+
+    <section class="hero">
+      <div class="hero-left">
+        <h2>Discover top products — curated for you</h2>
+        <p>Explore our handpicked collection of items with fast delivery and reliable customer service. Clean interface, simple shopping.</p>
+
+        <div class="search">
+          <input type="search" placeholder="Search products, e.g. headphones">
+          <button>Search</button>
+        </div>
+
+        <div style="margin-top:18px;display:flex;gap:12px;align-items:center">
+          <div style="background:var(--glass);padding:8px 12px;border-radius:8px">Free delivery over $50</div>
+          <div style="background:rgba(255,255,255,0.02);padding:8px 12px;border-radius:8px">30 days returns</div>
+        </div>
+      </div>
+
+      <aside class="hero-right">
+        <div class="promo">
+          <img src="limited.png" alt="promo">
+          <div>
+            <h3>Limited Offer</h3>
+            <p>Get 15% off on your first order. Use code: WELCOME15</p>
+          </div>
+        </div>
+
+        <div style="margin-top:16px;display:flex;gap:10px;align-items:center">
+          <img src="Wireless Headset.jpeg" alt="item" style="width:64px;height:64px;border-radius:8px;object-fit:cover">
+          <div>
+            <strong>Wireless Headset</strong>
+            <div style="color:var(--muted);font-size:13px">From $45.99</div>
+          </div>
+        </div>
+      </aside>
+    </section>
+
+    <section id="products" class="products">
+      <!-- Product 1 -->
+      <div class="card">
+        <img src="sneakers.jpeg" alt="sneakers">
+        <h4>Classic Sneakers</h4>
+        <p>Comfort-first design with durable sole.</p>
+        <div class="price-row">
+          <div class="price">$59.00</div>
+          <button class="btn">Add to cart</button>
+        </div>
+      </div>
+
+      <!-- Product 2 -->
+      <div class="card">
+        <img src="watch.jpeg" alt="watch">
+        <h4>Minimal Watch</h4>
+        <p>Sleek metal band. Water resistant.</p>
+        <div class="price-row">
+          <div class="price">$89.00</div>
+          <button class="btn">Add to cart</button>
+        </div>
+      </div>
+
+      <!-- Product 3 -->
+      <div class="card">
+        <img src="headphone.jpeg" alt="headphones">
+        <h4>Wireless Headphones</h4>
+        <p>Noise reduction and long battery life.</p>
+        <div class="price-row">
+          <div class="price">$129.00</div>
+          <button class="btn">Add to cart</button>
+        </div>
+      </div>
+
+      <!-- Product 4 -->
+      <div class="card">
+        <img src="back.jpeg" alt="backpack">
+        <h4>Everyday Backpack</h4>
+        <p>Spacious interior and laptop sleeve.</p>
+        <div class="price-row">
+          <div class="price">$49.00</div>
+          <button class="btn">Add to cart</button>
+        </div>
+      </div>
+
+      <!-- Product 5 -->
+      <div class="card">
+        <img src="jacket.jpg" alt="jacket">
+        <h4>Light Jacket</h4>
+        <p>Windproof and breathable fabric.</p>
+        <div class="price-row">
+          <div class="price">$79.00</div>
+          <button class="btn">Add to cart</button>
+        </div>
+      </div>
+
+      <!-- Product 6 -->
+      <div class="card">
+        <img src="sunglasses.jpeg" alt="sunglasses">
+        <h4>Premium Sunglasses</h4>
+        <p>Polarized lenses for UV protection.</p>
+        <div class="price-row">
+          <div class="price">$39.00</div>
+          <button class="btn">Add to cart</button>
+        </div>
+      </div>
+
+    </section>
+
+    <footer>
+      <div>© Phantom Shop — All rights reserved</div>
+      <div>Designed with ❤️ • <a id="contact" href="#" style="color:var(--muted);text-decoration:none">Contact</a></div>
+    </footer>
+
   </div>
 </body>
 </html>
